@@ -1,0 +1,12 @@
+  p.notice
+  h1 Lista uzytkownikow
+  table#users.table.table-striped
+    thead
+      tr
+        th Imie
+        th Nazwisko
+        th E-mail
+        th Admin
+    tbody
+    -@users.each do |user| 
+      = render :partial => "tr", locals: {user: user}
