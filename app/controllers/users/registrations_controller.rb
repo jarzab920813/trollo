@@ -21,6 +21,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/edit
   def edit
     @user = User.find(current_user.id)
+    # @user.find(session["warden.user.user.key"][1][0])
+
   end
 
   # PUT /resource

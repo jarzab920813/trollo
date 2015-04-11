@@ -21,6 +21,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    
   end
 
   def update
@@ -33,6 +34,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+    respond_to do |format|
+        format.html # show.html.erb
+        format.xml { render :xml => @user }
+    end
+  end
+    
   def destroy
     @user = User.find(params[:id])
     if @user.destroy
@@ -44,6 +53,12 @@ class UsersController < ApplicationController
     protected
 
   def user_params
-      params.require(:user).permit(:name, :surname, :email, :password, :password_confirmation, :commit)
-   end
+      params.require(:user).permit(:name, :surname, :email, :password, :password_confirmation, :commit, :admin)
+  end
+   
+  def admin?
+    false
+  end
+
+
 end

@@ -2,4 +2,8 @@ tr
   td = user.name 
   td = user.surname 
   td = user.email
-  td = user.admin? 
+  td = user.admin?
+  -if can? :create, :user
+    / td = link_to 'Edytuj', edit, :class => "btn btn-primary"
+	td = link_to 'Usuń',  admin_destroy_user_path(user), method: :delete, data: { confirm: "Czy na pewno chcesz usunąć" }, :class => "btn btn-primary" 
+  end

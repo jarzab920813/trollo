@@ -1,0 +1,8 @@
+= form_for(@user) do |f|
+	= f.input :name, required: true, autofocus: true, label: 'Imię'
+	= f.input :surname, required: true, label: 'Nazwisko' 
+  = f.input :email, required: true, label: 'Adres E-mail' 
+   = f.input :password, required: true, label: 'Hasło', hint: ("Minimum #{@minimum_password_length} znaków" if @validatable) 
+  = f.input :password_confirmation, required: true, label: 'Powtórz Hasło' 
+  = f.label "Czy admin" 
+  = f.check_box :admin 

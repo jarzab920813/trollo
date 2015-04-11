@@ -1,5 +1,8 @@
   p.notice
   h1 Lista uzytkownikow
+  -if can? :create, :user
+    = link_to 'Dodaj nowego użytkownika', new_user_registration_path, :class => "btn btn-primary"
+  end
   table#users.table.table-striped
     thead
       tr
@@ -7,6 +10,10 @@
         th Nazwisko
         th E-mail
         th Admin
+        -if can? :create, :user
+          th Edytuj
+          th Usuń
+        end
     tbody
-    -@users.each do |user| 
-      = render :partial => "tr", locals: {user: user}
+      -@users.each do |user| 
+        = render :partial => "tr", locals: {user: user}

@@ -1,0 +1,12 @@
+  h1 Dane użytkownika
+  table#users.table.table-striped
+    thead
+      tr
+        th Imie
+        td = @user.name 
+        th Nazwisko
+        td = @user.surname 
+        th E-mail
+        td = @user.email
+        th Admin
+        td = @user.admin? 
