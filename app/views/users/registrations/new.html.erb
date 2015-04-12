@@ -16,6 +16,7 @@
     <%= f.input :email, required: true, label: 'Adres E-mail' %>
     <%= f.input :password, required: true, label: 'Hasło', hint: ("Minimum #{@minimum_password_length} znaków" if @validatable) %>
     <%= f.input :password_confirmation, required: true, label: 'Powtórz Hasło' %>
+    <%= f.input :admin, label: 'Czy admin' %>
   </div>
 
   <div class="form-actions">

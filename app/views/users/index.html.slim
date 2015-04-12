@@ -7,6 +7,13 @@
         th Nazwisko
         th E-mail
         th Admin
+        -if can? :create, :user
+          th Usuń
+          th Edytuj          
     tbody
-    -@users.each do |user| 
-      = render :partial => "tr", locals: {user: user}
+      -if can? :create, :user
+        =link_to 'Nowy użytkownik', new_user_registration_path, class: "btn btn-primary "
+      -@users.each do |user| 
+        = render :partial => "tr", locals: {user: user}
+
+    
