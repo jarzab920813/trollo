@@ -1,0 +1,28 @@
+p.notice
+  h2 Dane profilu
+  table#users.table.table-striped
+    thead
+      tr
+        td Imie
+        td =@user.name
+      tr
+        td Nazwisko
+        td =@user.surname
+      tr
+        td E-mail
+        td =@user.email
+      tr
+        td Uprawnienia
+        td =@user.admin
+      td = link_to 'Edytuj', edit_user_path, class: "btn btn-warning"
+      td = link_to "Usuń", admin_destroy_user_path, method: :delete, data: { confirm: "Czy na pewno chcesz usunąć użytkownika" }, class: "btn btn-danger"
+      td = link_to 'Powrót',:back, class: "btn btn-primary "
+  / td =link_to "Usuń", admin_destroy_user_path(user), method: :delete, data: { confirm: "Czy na pewno chcesz usunąć użytkownika" }, class: "btn btn-danger"
+  / td = link_to 'Edytuj', edit_user_path(user), class: "btn btn-warning"
+      
+      
+
+      
+      
+
+    

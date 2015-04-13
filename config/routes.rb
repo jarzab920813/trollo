@@ -3,7 +3,17 @@ Rails.application.routes.draw do
                                     passwords: "users/passwords",
                                     registrations: "users/registrations"}
 
-  resources :users
+  resources :users do
+    #collection ścieżki do których nie przesyłamy id
+    collection do 
+
+    end
+    #member  ścieżki do który przesyłamy id
+    member do
+      get :show_profil
+
+    end
+  end
   root :to => "users#index"
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
   # The priority is based upon order of creation: first created -> highest priority.

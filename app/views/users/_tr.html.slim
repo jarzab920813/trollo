@@ -5,5 +5,5 @@ tr
   td = user.admin?
   -if can? :create, :user and user.admin == nil
   	td =link_to "Usuń", admin_destroy_user_path(user), method: :delete, data: { confirm: "Czy na pewno chcesz usunąć użytkownika" }, class: "btn btn-danger"
-  	td = link_to 'Edytuj', new_user_registration_path, class: "btn btn-warning"
+  	td = link_to 'Edytuj', edit_user_path(user), class: "btn btn-warning"
 /  

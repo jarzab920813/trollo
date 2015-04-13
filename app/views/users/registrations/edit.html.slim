@@ -1,25 +1,2 @@
-h2 Edit =resource_name.to_s.humanize 
-
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| 
-  = f.error_notification 
-
-  .form-inputs
-    = f.input :name, required: true, autofocus: true, label: 'Imię' 
-    = f.input :surname, required: true, label: 'Nazwisko' 
-    = f.input :email, required: true, label: 'E-mail' 
-    
-    -if devise_mapping.confirmable? && resource.pending_reconfirmation? 
-      p Currently waiting confirmation for: =resource.unconfirmed_email 
-    end
-    
-    = f.input :password, autocomplete: "off", label: 'Nowe Hasło' ,hint: "Jeśli nie chcesz go zmieniać, pozostaw to pole puste", required: false 
-    = f.input :password_confirmation, required: false, label: 'Powtórz nowe hasło'
-    = f.input :current_password, label: 'Obecne hasło' ,hint: "Podaj obecne hasło, aby potwierdzić zmiany", required: true
-    = f.input :admin, label: 'Czy admin' 
-  .form-actions
-    = f.button :submit, "Zapisz" 
-    end 
-
-  -if @user.admin == nil
-    = link_to "Usuń moje konto", registration_path(resource_name), data: { confirm: "Na pewno?" }, method: :delete, :class => "btn btn-danger"
-  = link_to "Powrót", :back, :class => "btn btn-primary"
+h1 Edytuj użytkowników
+=render 'new'

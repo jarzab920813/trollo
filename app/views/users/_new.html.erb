@@ -1,17 +1,16 @@
+
 <div class="row">
 <div class="col-sm-3">
 </div>
 
 <div class="col-sm-6">
 
-<h2>Rejestracja</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :class => 'form-horizontal' }) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for @user do |f| %>
+ <%= f.error_notification %> 
 
   <div class="form-inputs">
-  	<%= f.input :name, required: true, autofocus: true, label: 'Imię' %>
-  	<%= f.input :surname, required: true, label: 'Nazwisko' %>
+    <%= f.input :name, required: true, autofocus: true, label: 'Imię' %>
+    <%= f.input :surname, required: true, label: 'Nazwisko' %>
     <%= f.input :email, required: true, label: 'Adres E-mail' %>
     <%= f.input :password, required: true, label: 'Hasło', hint: ("Minimum #{@minimum_password_length} znaków" if @validatable) %>
     <%= f.input :password_confirmation, required: true, label: 'Powtórz Hasło' %>
@@ -22,10 +21,12 @@
     <%= f.button :submit, "Rejestruj" %>
   </div>
 <% end %>
-<%= render "users/shared/links" %>
+
 </div>
 
 <div class="col-sm-3">
 </div>
 
 </div>
+
+

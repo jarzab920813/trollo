@@ -1,6 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   prepend_before_filter :require_no_authentication, :only => [ :cancel ]
-# before_filter :configure_sign_up_params, only: [:create]
+  # before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -45,7 +45,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def user_params
-      params.require(:user).permit(:name, :surname, :email, :password, :password_confirmation, :current_password, :commit)
+      params.require(:user).permit(:name, :surname, :email, :password, :password_confirmation, :current_password, :admin, :commit)
    end
 
   # You can put the params you want to permit in the empty array.
