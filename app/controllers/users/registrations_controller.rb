@@ -5,17 +5,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    if current_user.nil?
-      flash[:notice] = "Rejestracja jest zamknięta." 
-      redirect_to root_path
-    else
-      super
-    end
+    authorize! :create, User
+    @user = User.new
   end
 
   # POST /resource
   def create
-    super
+    @user = User.new(user_params)
+    authorize! :create, @user
+    if @user.save
+      redirect_to root_path
+    else
+      redirect_to new_user_registration_path
+    end
   end
 
   # GET /resource/edit
@@ -27,13 +29,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    super
+    authorize! :update, current_user
+    if current_user.admin == 1 && user_params.admin == 0
+      redirect_to root_path
+    else
+     super
+   end
   end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+ def destroy  
+    super
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -47,7 +54,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def user_params
-      params.require(:user).permit(:name, :surname, :email, :password, :password_confirmation, :current_password, :commit)
+      params.require(:user).permit(:name, :surname, :email, :password, :password_confirmation, :current_password, :admin, :commit)
    end
 
   # You can put the params you want to permit in the empty array.

@@ -16,7 +16,9 @@
     <%= f.input :password, autocomplete: "off", label: 'Nowe Hasło' ,hint: "Jeśli nie chcesz go zmieniać, pozostaw to pole puste", required: false %>
     <%= f.input :password_confirmation, required: false, label: 'Powtórz nowe hasło' %>
     <%= f.input :current_password, label: 'Obecne hasło' ,hint: "Podaj obecne hasło, aby potwierdzić zmiany", required: true %>
-    <%= f.check_box :admin  %><br>
+    <% if can? :manage, User %>
+      <%= f.check_box :admin  %><br>
+    <% end %>
   </div>
 
   <div class="form-actions">

@@ -3,7 +3,13 @@ tr
   td = user.surname 
   td = user.email
   td = user.admin?
-  -if can? :create, :user
-    / td = link_to 'Edytuj', edit, :class => "btn btn-primary"
-	td = link_to 'Usuń',  admin_destroy_user_path(user), method: :delete, data: { confirm: "Czy na pewno chcesz usunąć" }, :class => "btn btn-primary" 
+  -if user_signed_in? and current_user.admin?
+	  -if can? :update, user
+	  	td = link_to 'Edytuj',  admin_edit_user_path(user), :class => "btn btn-primary" 
+	  -else
+	  	td = link_to 'Edytuj',  admin_edit_user_path(user), :class => "btn btn-primary", :disabled => true
+	  -if can? :delete, user and user.id != current_user.id
+	   	td = link_to 'Usuń',  admin_destroy_user_path(user), method: :delete, data: { confirm: "Czy na pewno chcesz usunąć" }, :class => "btn btn-primary" 
+	  -else
+	  	td = link_to 'Usuń',  admin_destroy_user_path(user), :class => "btn btn-primary" , :disabled => true
   end

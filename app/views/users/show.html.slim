@@ -3,10 +3,15 @@
     thead
       tr
         th Imie
-        td = @user.name 
+        td = @user.name
+      tr 
         th Nazwisko
-        td = @user.surname 
+        td = @user.surname
+      tr 
         th E-mail
         td = @user.email
+      tr
         th Admin
         td = @user.admin? 
+  
+  = link_to "Edytuj", edit_user_registration_path, :class => 'btn-primary'
