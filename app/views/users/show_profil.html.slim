@@ -1,16 +1,16 @@
 p.notice
-  h2 Dane profilu
+  h1.page-header Dane profilu
   table#users.table.table-striped
     thead
       tr
         td Imie
-        td =@user.name
+        td[colspan = 2] =@user.name
       tr
         td Nazwisko
-        td =@user.surname
+        td[colspan = 2] =@user.surname
       tr
         td E-mail
-        td =@user.email
+        td[colspan = 2] =@user.email
       tr
         td Uprawnienia
         td =@user.admin

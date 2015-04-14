@@ -1,5 +1,4 @@
-  p.notice
-  h1 Trolo lolllo 
+  h1.page-header Dashboard
   table#users.table.table-striped
     thead
       tr
@@ -15,5 +14,3 @@
         =link_to 'Nowy użytkownik', new_user_path, class: "btn btn-primary "
       -@users.each do |user| 
         = render :partial => "tr", locals: {user: user}
-
-    
