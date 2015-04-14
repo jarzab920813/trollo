@@ -7,7 +7,7 @@ tr
       span.glyphicon.glyphicon-ok
     -else
       span.glyphicon.glyphicon-remove
-  -if can? :create, :user and user.admin == nil
+  -if can? :create, :user and user.admin == false
   	td =link_to "Usuń", admin_destroy_user_path(user), method: :delete, data: { confirm: "Czy na pewno chcesz usunąć użytkownika" }, class: "btn btn-danger"
   	td = link_to 'Edytuj', edit_user_path(user), class: "btn btn-warning"
   -else
