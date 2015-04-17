@@ -1,0 +1,12 @@
+h1.page-header Usuwanie konta
+
+-if @user.admin?
+	p Usunięcie konta spowoduje usunięcie wszystkich namespace'ów oraz projektów, które stworzyłeś! TEJ OPERACJI NIE MOŻNA COFNĄĆ!
+	p Aby potwierdzić, wpisz swoje hasło:
+-else
+	p Usunięcie konta spowoduje usunięcie użytkownika ze wszystkich projektów, w których brał on udział. TEJ OPERACJI NIE MOŻNA COFNĄĆ!
+	p Aby potwierdzić, wpisz swoje hasło:
+-if params[:id].present?
+	=render partial: '/users/password_confirm', locals: { abc: destroy_user_user_path(params[:id]) }
+-else
+	=render partial:'/users/password_confirm', locals: { abc: destroy_users_path} 

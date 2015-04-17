@@ -1,17 +1,22 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: "users/sessions",
-                                    passwords: "users/passwords",
-                                    registrations: "users/registrations"}
-
+  devise_for :users
   resources :users do
     #collection ścieżki do których nie przesyłamy id
     collection do 
+      get :show_profile
+      get :edit_profile
+      get 'edit_profile/password' => 'users#change_password', :as => :change_password
+      patch 'edit_profile/password' => 'users#update'
 
+      get 'edit_profile/delete/' => 'users#destroy_confirm', :as => :destroy_confirm
+      patch 'edit_profile/delete/' => 'users#destroy_with_password', :as => :destroy
     end
     #member  ścieżki do który przesyłamy id
     member do
-      get :show_profil
-
+      get 'edit/password' => 'users#change_users_password', :as => :change_users_password
+      patch 'edit/password' => 'users#update'
+      get 'edit/delete/' => 'users#destroy_confirm', :as => :destroy_user_confirm
+      patch 'edit/delete/' => 'users#destroy_with_password', :as => :destroy_user
     end
   end
   root :to => "users#index"

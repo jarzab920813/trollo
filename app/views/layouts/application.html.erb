@@ -24,7 +24,7 @@
         <% if user_signed_in? %>
           <li>
           <% if can? :update, current_user %>
-          <%= link_to "Profil", show_profil_user_path(current_user.id), :class => 'navbar-link' %> </li>
+          <%= link_to "Profil", show_profile_users_path, :class => 'navbar-link' %> </li>
           <% end %>
           <li><%= link_to "Wyloguj", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
         <% else %>

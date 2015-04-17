@@ -1,2 +1,10 @@
 h1.page-header Edycja użytkownika
+
+-if params[:id].present?
+	=link_to "Zmiana hasła",change_users_password_user_path , :class => 'btn btn-primary'
+-else
+	=link_to "Zmiana hasła",change_password_users_path , :class => 'btn btn-primary'
+
 =render "users/new"
+
+

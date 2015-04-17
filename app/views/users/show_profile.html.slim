@@ -1,4 +1,4 @@
-.notice
+p.notice
   h1.page-header Dane profilu
   table#users.table.table-striped
     thead
@@ -14,8 +14,8 @@
       tr
         td Uprawnienia
         td =@user.admin
-      td = link_to 'Edytuj', edit_user_path, class: "btn btn-warning"
-      td = link_to "Usuń", admin_destroy_user_path, method: :delete, data: { confirm: "Czy na pewno chcesz usunąć użytkownika" }, class: "btn btn-danger"
+      td = link_to 'Edytuj', edit_profile_users_path, class: "btn btn-warning"
+      td = link_to "Usuń", destroy_confirm_users_path, class: "btn btn-danger"
       td = link_to 'Powrót',:back, class: "btn btn-primary "
   / td =link_to "Usuń", admin_destroy_user_path(user), method: :delete, data: { confirm: "Czy na pewno chcesz usunąć użytkownika" }, class: "btn btn-danger"
   / td = link_to 'Edytuj', edit_user_path(user), class: "btn btn-warning"
