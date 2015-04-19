@@ -5,7 +5,9 @@
     <%= f.input :name, required: true, autofocus: true, label: 'Imię' %>
     <%= f.input :surname, required: true, label: 'Nazwisko' %>
     <%= f.input :email, required: true, label: 'Adres E-mail' %>
-    <%= f.input :admin, label: 'Czy admin' %>
+    <% if @user.admin? %>
+      <%= f.input :admin, label: 'Czy admin' %>
+    <% end %>
   </div>
 
   <div class="form-actions">
