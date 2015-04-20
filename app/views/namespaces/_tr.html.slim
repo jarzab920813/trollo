@@ -1,0 +1,7 @@
+tr
+  td = namespace.name 
+  td = namespace.description 
+  td 
+  -if can? :create, :user 
+  	td =link_to "Usuń", namespace_path(namespace), class: "btn btn-danger", method: :delete, data:{confirm: "Czy jesteś pewien?"}
+  	td = link_to 'Edytuj', edit_namespace_path(namespace), class: "btn btn-warning"

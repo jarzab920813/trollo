@@ -1,0 +1,31 @@
+# == Schema Information
+#
+# Table name: projects
+#
+#  id           :integer          not null, primary key
+#  name         :string(255)
+#  date_begin   :date
+#  date_end     :date
+#  description  :text(65535)
+#  status       :boolean
+#  user_id      :integer
+#  namespace_id :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  date_begin: 2015-04-14
+  date_end: 2015-04-14
+  description: MyText
+  status: false
+
+two:
+  name: MyString
+  date_begin: 2015-04-14
+  date_end: 2015-04-14
+  description: MyText
+  status: false

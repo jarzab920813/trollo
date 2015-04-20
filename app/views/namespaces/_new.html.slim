@@ -1,0 +1,6 @@
+=simple_form_for @namespace do |f|
+  = f.input :name, required: true, autofocus: true, label: 'Nazwa'
+  = f.input :description, :as => :text, required: true, label: 'Opis'
+
+  = f.button :submit, "Zapisz"
+end

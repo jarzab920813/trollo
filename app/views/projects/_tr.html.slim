@@ -1,0 +1,17 @@
+tr
+  td = project.name 
+  td = project.date_begin 
+  td = project.date_end
+  td = project.description
+  td  
+    -if (project.status?)
+      span.glyphicon.glyphicon-ok
+    -else
+      span.glyphicon.glyphicon-remove
+  -if can? :create, :user 
+  	td =link_to "Usuń", project_path(project), class: "btn btn-danger", method: :delete, data:{confirm: "Czy jesteś pewien?"}
+  	td = link_to 'Edytuj', edit_project_path(project), class: "btn btn-warning"
+  -else
+    td[colspan = 2]
+
+    destroy_user_confirm_user_path(user)

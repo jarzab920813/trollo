@@ -1,0 +1,18 @@
+h1.page-header Projekty
+table#users.table.table-striped
+	thead
+		tr
+			th Nazwa
+			th Data rozpoczęcia
+			th Data zakończenia
+			th Opis
+			th Status
+			/ th Użytkownicy
+			th Usuń
+			th Edytuj
+	tbody
+	-if can? :create, :user
+     	=link_to 'Nowy projekt', new_project_path, class: "btn btn-primary "
+    -@projects.each do |project| 
+        = render :partial => "tr", locals: {project: project}
+
