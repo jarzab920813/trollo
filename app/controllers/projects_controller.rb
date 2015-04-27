@@ -47,12 +47,14 @@ class ProjectsController < ApplicationController
 
   def update
      respond_to do |format|
-      if @project.update(namespace_params)
-        format.html { redirect_to @project, notice: 'namespace was successfully updated.' }
+      if @project.update(project_params)
+        format.html { redirect_to projects_path, notice: 'Projekt został poprawnie zaktualizowany' }
         format.json { render :show, status: :ok, location: @project }
+
       else
         format.html { render :edit }
         format.json { render json: @project.errors, status: :unprocessable_entity }
+        red
       end
     end
 

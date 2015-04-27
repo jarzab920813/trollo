@@ -1,9 +1,9 @@
 = simple_form_for @project do |f| 
 	= f.error_notification 
-	form-inputs
-  	= f.input :name, required: true,:as => :string, label: 'Nazwa'
-    = f.input :date_begin, required: true, label: 'Data rozpoczęcia', :input_html =>{class: "input-group date"}
-    = f.input :date_end, required: true, label: 'Data zakończenia'
+	.form-inputs
+  	= f.input :name, required: true, :as => :string , label: 'Nazwa'
+    = f.input :date_begin, required: true, :as => :string, label: 'Data rozpoczęcia',input_html: { class: 'date' } 
+    = f.input :date_end, required: true, label: 'Data zakończenia',:as => :string
     = f.input :description, required: true, autofocus: true, label: 'Opis'
     = f.input :status, required: true, autofocus: true, label: 'Rozpoczęty'
     / = f.input :name, :label => "Namespace", :as => :select, collection: @namespaces,  :input_html => {:id => "e1"}
@@ -15,7 +15,9 @@
     = f.association :users, :as => :check_boxes, collection: User.all
 	form-actions
   	= f.button :submit, "Zapisz"
-/ javascript:
-/   var project = new Project;
-/   project.dates();
+javascript:
+  var project = new Project;
+  project.date();
+
+ 
 

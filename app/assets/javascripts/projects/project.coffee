@@ -1,5 +1,7 @@
 class @Project
   constructor: ->
     # gdsfgsd
-	  $('.date').datepicker()
+ 	date: ->
+		$('.date').datepicker()
+	
 	 
