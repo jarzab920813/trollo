@@ -32,13 +32,8 @@ ActiveRecord::Schema.define(version: 20150427141404) do
     t.datetime "updated_at",                 null: false
   end
 
-<<<<<<< Updated upstream
-  add_index "projects", ["namespace_id"], name: "fk_rails_df9a01e841", using: :btree
-  add_index "projects", ["user_id"], name: "fk_rails_8d590ab40d", using: :btree
-=======
   add_index "projects", ["namespace_id"], name: "fk_rails_6b4c14e9bd", using: :btree
   add_index "projects", ["user_id"], name: "fk_rails_8f34b119c2", using: :btree
->>>>>>> Stashed changes
 
   create_table "projects_users", id: false, force: :cascade do |t|
     t.integer "user_id",    limit: 4
@@ -54,7 +49,7 @@ ActiveRecord::Schema.define(version: 20150427141404) do
     t.text     "description", limit: 65535,                                 null: false
     t.integer  "priority",    limit: 4,     default: 1,                     null: false
     t.boolean  "done",        limit: 1,     default: false,                 null: false
-    t.datetime "date_end",                  default: '2015-04-27 13:24:04', null: false
+    t.datetime "date_end",                  default: '2015-04-27 18:51:31', null: false
     t.datetime "created_at",                                                null: false
     t.datetime "updated_at",                                                null: false
   end
