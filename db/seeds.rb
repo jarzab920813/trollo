@@ -21,3 +21,33 @@ unless User.any?
   password_confirmation: 'Qwer1234',
   admin: '1')
 end
+
+unless Namespace.any?
+	puts "Pierwszy Namespace"
+	Namespace.create!(
+		name: "Pierwszy Namespace",
+		description: "Pierwszy projekt wykonany w celu testów")
+end
+
+unless Project.any?
+	puts "Pierwszy projekt"
+	Project.create!(
+		name: 'Pierwszy projekt',
+		date_begin: DateTime.now,
+		date_end: DateTime.now,
+		description: "Pierwszy projekt wykonany w celu testów",
+		status: 1,
+		user_id: User.where(admin: 1).first[:id],
+		namespace_id: Namespace.first[:id])
+
+end
+
+unless Task.any?
+	puts "Pierwsze zadanie"
+	Task.create!(
+		project_id: Project.first[:id],
+		title: "Pierwsze zadanie",
+		description: "Pierwsze zadanie wykonane w celu testowania.",
+		priority: :normal,
+		done: false)
+end

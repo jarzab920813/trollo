@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150419182541) do
+ActiveRecord::Schema.define(version: 20150427141404) do
 
   create_table "namespaces", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 20150419182541) do
     t.datetime "updated_at",                 null: false
   end
 
-  add_index "projects", ["namespace_id"], name: "fk_rails_1d41007910", using: :btree
-  add_index "projects", ["user_id"], name: "fk_rails_5db7a3b827", using: :btree
+  add_index "projects", ["namespace_id"], name: "fk_rails_df9a01e841", using: :btree
+  add_index "projects", ["user_id"], name: "fk_rails_8d590ab40d", using: :btree
 
   create_table "projects_users", id: false, force: :cascade do |t|
     t.integer "user_id",    limit: 4
@@ -42,6 +42,27 @@ ActiveRecord::Schema.define(version: 20150419182541) do
 
   add_index "projects_users", ["project_id"], name: "index_projects_users_on_project_id", using: :btree
   add_index "projects_users", ["user_id"], name: "index_projects_users_on_user_id", using: :btree
+
+  create_table "tasks", force: :cascade do |t|
+    t.integer  "project_id",  limit: 4
+    t.string   "title",       limit: 255,                                   null: false
+    t.text     "description", limit: 65535,                                 null: false
+    t.integer  "priority",    limit: 4,     default: 1,                     null: false
+    t.boolean  "done",        limit: 1,     default: false,                 null: false
+    t.datetime "date_end",                  default: '2015-04-27 13:24:04', null: false
+    t.datetime "created_at",                                                null: false
+    t.datetime "updated_at",                                                null: false
+  end
+
+  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id", using: :btree
+
+  create_table "tasks_users", id: false, force: :cascade do |t|
+    t.integer "user_id", limit: 4
+    t.integer "task_id", limit: 4
+  end
+
+  add_index "tasks_users", ["task_id"], name: "index_tasks_users_on_task_id", using: :btree
+  add_index "tasks_users", ["user_id"], name: "index_tasks_users_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                   limit: 255, default: "", null: false

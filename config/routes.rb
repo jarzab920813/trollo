@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users, :skip => [:registrations]
   resources :users do
     #collection ścieżki do których nie przesyłamy id
@@ -35,6 +36,8 @@ Rails.application.routes.draw do
       
     end
     member do
+
+      resources :tasks, param: :task_id
       
     end
   end

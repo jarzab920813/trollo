@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   # has_many :projects
   has_and_belongs_to_many :projects
+  has_and_belongs_to_many :tasks
 end
 # nested atributes_for
 

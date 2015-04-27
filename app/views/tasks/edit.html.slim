@@ -1,0 +1,5 @@
+h1 Task#edit
+p Find me in app/views/task/edit.html.slim
+
+h1.page-header Edytuj zadanie
+=render partial: "tasks/form", locals: {method: :patch, path: task_path}

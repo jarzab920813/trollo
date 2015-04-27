@@ -1,0 +1,15 @@
+fadsfsdfsdf
+/- if @task.nil?
+/	= simple_form_for @task do |f| 
+/- else if !@task.nil?
+= simple_form_for @task, method: method, url: path  do |f| 
+	= f.error_notification 
+	form-inputs
+		= f.input :title, required: true, autofocus: true, label: 'Nazwa'
+		= f.input :description, required: true, autofocus: true, label: 'Opis'
+  	= f.input :date_end, as: :datetime_picker, required: true, label: 'Data zakończenia'
+  	= f.input :priority, collection: Task.priorities.keys, required: true, autofocus: true, label: 'Priorytet'
+  	= f.input :users, collection: @users, input_html: { class: 'multiselectuser', multiple: true}
+	form-actions
+		= f.button :submit, "Zapisz" 
+end 

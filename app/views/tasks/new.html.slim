@@ -1,0 +1,8 @@
+h1 Task#new
+p Find me in app/views/task/new.html.slim
+
+h1.page-header Nowe zadanie
+=render partial: "tasks/form", locals: {method: :post, path: tasks_path}
+
+
+

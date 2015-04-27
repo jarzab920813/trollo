@@ -1,0 +1,18 @@
+h1.page-header = Project.find(params[:id]).name
+table#tasks.table.table-striped
+  thead
+    tr
+      th Nazwa
+      th Opis
+      th Priorytet
+      th Data Rozpoczęcia
+      th Data Zakończenia
+      th Zakończone
+      -if can? :create, :task
+        th Usuń
+        th Edytuj          
+  tbody
+    -if can? :create, :task
+      =link_to 'Nowe zadanie', new_task_path, class: "btn btn-primary "
+    -@tasks.each do |task| 
+      = render :partial => "tr", locals: {task: task}
