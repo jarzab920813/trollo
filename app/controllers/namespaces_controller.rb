@@ -36,7 +36,7 @@ class NamespacesController < ApplicationController
   def update
      respond_to do |format|
       if @namespace.update(namespace_params)
-        format.html { redirect_to namespaces_path, notice: 'namespace was successfully updated.' }
+        format.html { redirect_to namespaces_path, notice: 'Namespace poprawnie edytowany.' }
         format.json { render :show, status: :ok, location: @namespace }
       else
         format.html { render :edit }
@@ -47,9 +47,9 @@ class NamespacesController < ApplicationController
   end
 
   def destroy
-    @namespace.destroy
+    
     if @namespace.destroy
-      flash[:notice] = "Successfully deleted User."
+      flash[:notice] = "Namespace usunięty."
       redirect_to namespaces_path
     end
     

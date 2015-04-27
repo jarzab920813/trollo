@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def create 
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = "Successfully created User." 
+      flash[:notice] = "Dodano użytkownika." 
       redirect_to root_path
     else
       render :action => 'new'
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
-      flash[:notice] = "Successfully updated User."
+      flash[:notice] = "Poprawnie edytowano użytkownika."
       redirect_to root_path
     else
       render :action => 'edit'
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if @user.destroy
-      flash[:notice] = "Successfully deleted User."
+      flash[:notice] = "Usunięto użytkownika."
       redirect_to root_path
     end
   end 
@@ -73,7 +73,7 @@ class UsersController < ApplicationController
     @user.errors[:base] << "Niepoprawne hasło" unless current_user.valid_password?(user_params[:password])
 
     if @user.errors.empty? and @user.destroy
-      flash[:notice] = "Successfully deleted User."
+      flash[:notice] = "Poprawnie usunięto użytkownika."
       redirect_to root_path
 
     else

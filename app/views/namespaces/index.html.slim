@@ -1,6 +1,7 @@
 h1.page-header Namespace'y
 -if can? :create, :user
  	=link_to 'Nowy namespace', new_namespace_path, class: "btn btn-primary "
+div class=("alert alert-success" if flash[:notice]) role="alert" =flash[:notice]
 table#users.table.table-striped
 	thead
 		tr

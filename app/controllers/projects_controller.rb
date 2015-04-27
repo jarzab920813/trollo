@@ -23,10 +23,21 @@ class ProjectsController < ApplicationController
     # respond_to do |format|
     #   format.js
     # end
-      if @project.save
+      #if @project.save
         # flash[:notice] = "Namespace został utworzony."
-        redirect_to projects_path
+      #  redirect_to projects_path
+     # end
+      respond_to do |format|
+      if @project.save
+        format.html { redirect_to projects_path, notice: 'Projekt został poprawnie dodany' }
+        format.json { render :show, status: :ok, location: @project }
+
+      else
+        format.html { render :edit }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+        red
       end
+    end
     #   else
     #     flash[:error] = "Namespace nie został utworzony."
     #     format.html { render :new }
@@ -46,11 +57,13 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    
      respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to projects_path, notice: 'Projekt został poprawnie zaktualizowany' }
-        format.json { render :show, status: :ok, location: @project }
-
+        #format.html { redirect_to projects_path, notice: 'Projekt został poprawnie zaktualizowany' }
+        #format.json { render :show, status: :ok, location: @project }
+        flash[:notice] = "Projekt został poprawnie zaktualizowany"
+        format.html { redirect_to projects_path }
       else
         format.html { render :edit }
         format.json { render json: @project.errors, status: :unprocessable_entity }
@@ -62,9 +75,16 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-    if @project.destroy
-      # flash[:notice] = "Usunięto projekt."
-      redirect_to projects_path
+    respond_to do |format|
+      if @project.destroy
+        format.html { redirect_to projects_path, notice: 'Projekt został usuniety' }
+        format.json { render :show, status: :ok, location: @project }
+
+      else
+        format.html { render :edit }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+        red
+      end
     end
     
   end 
