@@ -1,24 +1,23 @@
 = simple_form_for @project do |f| 
 	= f.error_notification 
-	form-inputs
-  	= f.input :name, required: true, autofocus: true, label: 'Nazwa'
-    = f.input :date_begin, required: true, label: 'Data rozpoczęcia' 
-    = f.input :date_end, required: true, label: 'Data zakończenia'
+	.form-inputs
+  	= f.input :name, required: true, :as => :string , label: 'Nazwa'
+    = f.input :date_begin, required: true, :as => :string, label: 'Data rozpoczęcia',input_html: { class: 'date' } 
+    = f.input :date_end, required: true, label: 'Data zakończenia',:as => :string
     = f.input :description, required: true, autofocus: true, label: 'Opis'
     = f.input :status, required: true, autofocus: true, label: 'Rozpoczęty'
-
-
-  	//tutaj wyrenderować userów
-    
-    select[multiple name="users"]
-      -@users.each do |u|
-        option value='#{u.id}' #{u.name} #{u.surname}
-
-
-  	/ = @users.map(&:name)
-    / = render("show_users")
-    end
+    / = f.input :name, :label => "Namespace", :as => :select, collection: @namespaces,  :input_html => {:id => "e1"}
+    / = f.simple_fields_for :namespaces do |p|
+    /   = p.input :namespace, :as => :select , collection: Namespace.all
+    / end
+    /f assocaction
+    = f.input :namespace_id, :as => :select, collection: Namespace.all
+    = f.association :users, :as => :check_boxes, collection: User.all
 	form-actions
-  	= f.button :submit, "Zapisz" 
-end 
+  	= f.button :submit, "Zapisz"
+javascript:
+  var project = new Project;
+  project.date();
+
+ 
 

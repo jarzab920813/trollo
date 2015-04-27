@@ -10,7 +10,7 @@ tr
     -else
       span.glyphicon.glyphicon-remove
   -if can? :crud, :task
-  	td =link_to "Usuń", task_path(params[:id], task.id), class: "btn btn-danger", method: :delete, data:{confirm: "Czy jesteś pewien?"}
+  	td = link_to "Usuń", task_path(params[:id], task.id), class: "btn btn-danger", method: :delete, data:{confirm: "Czy jesteś pewien?"}
   	td = link_to 'Edytuj', edit_task_path(params[:id], task.id), class: "btn btn-warning"
   -else
     td[colspan = 2]

@@ -7,7 +7,7 @@ tr
       span.glyphicon.glyphicon-ok
     -else
       span.glyphicon.glyphicon-remove
-  -if can? :create, :user and user.admin == false
+  -if can? :create, :user 
   	td =link_to "Usuń", destroy_user_confirm_user_path(user), class: "btn btn-danger"
   	td = link_to 'Edytuj', edit_user_path(user), class: "btn btn-warning"
   -else

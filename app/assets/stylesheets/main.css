@@ -109,6 +109,6 @@ body {
   margin-right: 0 !important;
 }
 
-form#new_user {
+form {
   width: 50%;
 }
