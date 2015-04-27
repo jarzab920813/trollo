@@ -12,11 +12,11 @@
 
   <div class="form-actions">
     <%= f.button :submit, "Zapisz" %>
+    <span class="or">lub</span>
+    <% if params[:id].present? %>
+      <%= link_to "Wróć", users_path, :class => "btn btn-default" %>
+      <% else %>
+      <%= link_to "Wróć", show_profile_users_path, :class => "btn btn-default" %>
+    <% end %>
   </div>
-<% end %>
-
-<% if params[:id].present? %>
-  <%= link_to "Powrót", users_path, :class => "btn btn-primary"%>
-  <% else %>
-  <%= link_to "Powrót", show_profile_users_path, :class => "btn btn-primary"%>
 <% end %>

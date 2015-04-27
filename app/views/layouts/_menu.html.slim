@@ -1,0 +1,5 @@
+.col-sm-3.col-md-2.sidebar
+  ul.nav.nav-sidebar
+    li class=('active' if params[:controller] == 'users') =link_to "Dashboard", users_path
+    li class=('active' if params[:controller] == 'namespaces') =link_to "Namespace'y", namespaces_path
+    li class=('active' if params[:controller] == 'projects') =link_to "Projekty", projects_path

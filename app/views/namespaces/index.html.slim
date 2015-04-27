@@ -1,11 +1,13 @@
 h1.page-header Namespace'y
+-if can? :create, :user
+ 	=link_to 'Nowy namespace', new_namespace_path, class: "btn btn-primary "
 table#users.table.table-striped
 	thead
 		tr
 			th Nazwa
 			th Opis
-	tbody
-    -if can? :create, :user
-     	=link_to 'Nowy namespace', new_namespace_path, class: "btn btn-primary "
-    -@namespace.each do |namespace| 
-      = render :partial => "tr", locals: {namespace: namespace}
+			th Usuń
+			th Edytuj
+	tbody 
+	  -@namespace.each do |namespace| 
+	    = render :partial => "tr", locals: {namespace: namespace}

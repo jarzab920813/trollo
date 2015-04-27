@@ -109,6 +109,13 @@ body {
   margin-right: 0 !important;
 }
 
+<<<<<<< Updated upstream
 form {
+=======
+form#new_user, .form-inputs {
+>>>>>>> Stashed changes
   width: 50%;
+}
+span.or {
+  padding: 0 10px;
 }
