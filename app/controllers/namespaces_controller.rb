@@ -7,10 +7,12 @@ class NamespacesController < ApplicationController
 
   def new
     @namespace = Namespace.new
+    
   end
 
   def create
     @namespace = Namespace.new(namespace_params)
+
     
 
     respond_to do |format|

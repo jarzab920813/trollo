@@ -3,11 +3,12 @@ tr
   td = project.date_begin 
   td = project.date_end
   td = project.description
-  td  
+  td 
     -if (project.status?)
       span.glyphicon.glyphicon-ok
     -else
       span.glyphicon.glyphicon-remove
+  td = project.namespace_id
   -if can? :create, :user 
   	td =link_to "Usuń", project_path(project), class: "btn btn-danger", method: :delete, data:{confirm: "Czy jesteś pewien?"}
   	td = link_to 'Edytuj', edit_project_path(project), class: "btn btn-warning"

@@ -2,19 +2,24 @@ class ProjectsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @projects = Project.all
+    @project = Project.all
+    # @project =Project.find(params[:namespace_id]) tutaj zeby wyyswietlalo namespace z tabeli laczacej
+
+
   end
 
   def new
     @project = Project.new
-    @users = User.all
+  
+
     
   end
 
   def create
     @project = Project.new(project_params)
-    @user = User.find(1)
-    @user.projects << @project
+    # @user = User.find(params[24])
+    # @user.projects << @projects
+    
     # respond_to do |format|
     #   format.js
     # end
@@ -63,13 +68,6 @@ class ProjectsController < ApplicationController
   end 
 
   def project_params
-    params.require(:project).permit(:name,:date_begin,:date_end,:description,:status, :id)
+    params.require(:project).permit(:name,:date_begin,:date_end,:description,:status,:namespace_id,:user_ids =>[])
   end
-
-  def show_users
-    @users = User.all
-  end 
-
-
-
 end

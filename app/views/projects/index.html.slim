@@ -7,9 +7,12 @@ table#users.table.table-striped
 			th Data zakończenia
 			th Opis
 			th Status
+			th Namespace
+			th Użytkownicy
 			/ th Użytkownicy
-			th Usuń
-			th Edytuj
+			-if can? :create, :user 
+				th Usuń
+				th Edytuj
 	tbody
 	-if can? :create, :user
      	=link_to 'Nowy projekt', new_project_path, class: "btn btn-primary "
