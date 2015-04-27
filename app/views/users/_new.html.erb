@@ -5,7 +5,7 @@
     <%= f.input :name, required: true, autofocus: true, label: 'Imię' %>
     <%= f.input :surname, required: true, label: 'Nazwisko' %>
     <%= f.input :email, required: true, label: 'Adres E-mail' %>
-    <% if @user.admin? %>
+    <% if current_user.admin? && @user.id != current_user.id %>
       <%= f.input :admin, label: 'Czy admin' %>
     <% end %>
   </div>
@@ -15,3 +15,8 @@
   </div>
 <% end %>
 
+<% if params[:id].present? %>
+  <%= link_to "Powrót", users_path, :class => "btn btn-primary"%>
+  <% else %>
+  <%= link_to "Powrót", show_profile_users_path, :class => "btn btn-primary"%>
+<% end %>
