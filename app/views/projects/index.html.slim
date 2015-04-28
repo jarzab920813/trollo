@@ -1,3 +1,4 @@
+
 h1.page-header Projekty
 div class=("alert alert-success" if flash[:notice]) role="alert" =flash[:notice]
 -if can? :create, :user
@@ -11,6 +12,7 @@ table#users.table.table-striped
 			th Opis
 			th Status
 			th Namespace
+			th Zadania
 			-if can? :create, :user 
 				th Usuń
 				th Edytuj
