@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     end
     member do
 
-      resources :tasks, param: :task_id
+      resources :tasks, param: :task_id 
       
     end
   end

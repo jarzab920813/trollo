@@ -11,8 +11,8 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.project_id = params[:id]
     @users = User.where(:id => params[:users])
-    @task.users << @users
-    afsdfsdfdf
+    # @task.users << @users
+
     # respond_to do |format|
     #   format.js
     # end
@@ -29,12 +29,12 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
-    @users = User.all
+    # @users = User.all
   end
 
   def edit
     @task = Project.tasks.find(params[:task_id])
-    @users = User.all
+    # @users = User.all
   end
 
   def show
@@ -52,7 +52,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task = Task.find(params[:task_id])
-    egeszege
+    
     if @task.destroy
       redirect_to tasks_path
     end
@@ -61,7 +61,7 @@ class TasksController < ApplicationController
   protected
 
   def task_params
-    params.require(:task).permit(:title,:description,:date_end,:priority,:users)
+    params.require(:task).permit(:title,:description,:date_end,:priority, :user_ids => [])
   end
 
 end

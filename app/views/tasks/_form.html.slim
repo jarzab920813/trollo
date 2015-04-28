@@ -9,7 +9,9 @@ fadsfsdfsdf
 		= f.input :description, required: true, autofocus: true, label: 'Opis'
   	= f.input :date_end, as: :datetime_picker, required: true, label: 'Data zakończenia'
   	= f.input :priority, collection: Task.priorities.keys, required: true, autofocus: true, label: 'Priorytet'
-  	= f.input :users, collection: @users, input_html: { class: 'multiselectuser', multiple: true}
+  	/ = f.input :users, collection: @users, input_html: { class: 'multiselectuser', multiple: true}
+  	= f.association :users, :as => :check_boxes, collection: User.all
+	
 	form-actions
 		= f.button :submit, "Zapisz" 
 end 

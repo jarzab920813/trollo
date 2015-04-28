@@ -2,8 +2,8 @@
 	= f.error_notification 
 	.form-inputs
   	= f.input :name, required: true, :as => :string , label: 'Nazwa'
-    = f.input :date_begin, required: true, :as => :string, label: 'Data rozpoczęcia',input_html: { class: 'date' } 
-    = f.input :date_end, required: true, label: 'Data zakończenia',:as => :string
+    = f.input :date_begin, required: true,as: :date_picker, label: 'Data rozpoczęcia',input_html: { class: 'date' } 
+    = f.input :date_end, required: true, label: 'Data zakończenia',as: :date_picker
     = f.input :description, required: true, autofocus: true, label: 'Opis'
     = f.input :status, required: true, autofocus: true, label: 'Rozpoczęty'
     / = f.input :name, :label => "Namespace", :as => :select, collection: @namespaces,  :input_html => {:id => "e1"}
@@ -17,6 +17,6 @@
   	= f.button :submit, "Zapisz"
     span.or lub
     = link_to "Wróć", :back, :class => "btn btn-default"
-javascript:
-  var project = new Project;
-  project.date();
+/ javascript:
+/   var project = new Project;
+/   project.date();
