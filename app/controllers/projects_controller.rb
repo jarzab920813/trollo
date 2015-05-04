@@ -10,8 +10,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-  
-
+    set_default_data
     
   end
 
@@ -88,6 +87,11 @@ class ProjectsController < ApplicationController
     end
     
   end 
+
+  def set_default_data
+    @project.date_begin = DateTime.now
+    @project.status = true
+  end
 
   def project_params
     params.require(:project).permit(:name,:date_begin,:date_end,:description,:status,:namespace_id,:user_ids =>[])

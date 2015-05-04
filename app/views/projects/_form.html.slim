@@ -1,11 +1,11 @@
 = simple_form_for @project do |f| 
 	= f.error_notification 
 	.form-inputs
-  	= f.input :name, required: true, :as => :string , label: 'Nazwa'
-    = f.input :date_begin, required: true,as: :date_picker, label: 'Data rozpoczęcia',input_html: { class: 'date' } 
+  	= f.input :name, required: true, :autofocus => true, :as => :string , label: 'Nazwa'
+    = f.input  :date_begin, required: true, as: :date_picker,  label: 'Data rozpoczęcia',input_html: { class: 'date' } 
     = f.input :date_end, required: true, label: 'Data zakończenia',as: :date_picker
-    = f.input :description, required: true, autofocus: true, label: 'Opis'
-    = f.input :status, required: true, autofocus: true, label: 'Rozpoczęty'
+    = f.input :description, label: 'Opis'
+    = f.input :status,  autofocus: true, label: 'Rozpoczęty'
     / = f.input :name, :label => "Namespace", :as => :select, collection: @namespaces,  :input_html => {:id => "e1"}
     / = f.simple_fields_for :namespaces do |p|
     /   = p.input :namespace, :as => :select , collection: Namespace.all
